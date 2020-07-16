@@ -1,0 +1,25 @@
+<html>
+  <body>
+    <button id="button">
+      click
+    </button>
+    <script>
+      let number = 0;
+      let button = document.getElementById('button');
+      const debounce = (func, wait) => {
+        var timeout;
+        return function (...args) {
+          clearTimeout(timeout);
+          timeout = setTimeout(function () {
+            func(...args);
+          }, wait);
+        };
+      };
+      let abc = (count) => {
+        alert((number += count));
+      };
+      const az = debounce(abc, 1000);
+      button.addEventListener('click', () => az(3));
+    </script>
+  </body>
+</html>
